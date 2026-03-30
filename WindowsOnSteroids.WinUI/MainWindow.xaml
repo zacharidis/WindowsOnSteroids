@@ -18,11 +18,27 @@
         </Grid.RowDefinitions>
 
         <!-- Header -->
+        <!-- Header -->
         <Border Background="{ThemeResource CardBackgroundFillColorDefaultBrush}" Padding="24,16">
-            <StackPanel Orientation="Horizontal" Spacing="12">
-                <TextBlock Text="⭐ Windows On Steroids" FontSize="28" FontWeight="SemiBold" VerticalAlignment="Center"/>
-                <TextBlock Text="30+ safe registry tweaks for Win11" FontSize="14" Opacity="0.7" VerticalAlignment="Center" Margin="0,4,0,0"/>
-            </StackPanel>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Orientation="Horizontal" Spacing="12" Grid.Column="0">
+                    <TextBlock Text="⭐ Windows On Steroids" FontSize="28" FontWeight="SemiBold" VerticalAlignment="Center"/>
+                    <TextBlock Text="v2.0 — 35+ safe tweaks" FontSize="14" Opacity="0.7" VerticalAlignment="Center" Margin="0,4,0,0"/>
+                </StackPanel>
+
+                <Button Grid.Column="2" 
+                Content="About" 
+                Click="About_Click"
+                Style="{StaticResource SubtleButtonStyle}"
+                VerticalAlignment="Center"
+                Padding="12,6"/>
+            </Grid>
         </Border>
 
         <!-- Main content -->

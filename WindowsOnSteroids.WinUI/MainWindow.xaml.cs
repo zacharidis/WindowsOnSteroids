@@ -118,6 +118,21 @@ namespace WindowsOnSteroids.WinUI
                 BulkApply(false);
         }
 
+        private void About_Click(object sender, RoutedEventArgs e)
+        {
+            var dialog = new ContentDialog
+            {
+                Title = "About Windows On Steroids",
+                Content = "Windows On Steroids v2\n\nMade by ZACHARIDIS ❤️\n\n" +
+                          "Clean WinUI 3 port + 20 new 2026 tweaks (AI, Gaming, Performance, Privacy).\n\n" +
+                          "Thank you for using the tool!\n\n" +
+                          "GitHub: " + "https://github.com/YOURUSERNAME/WindowsOnSteroids",
+                PrimaryButtonText = "Close",
+                XamlRoot = this.Content.XamlRoot
+            };
+
+            _ = dialog.ShowAsync();
+        }
         private void BulkApply(bool enable)
         {
             _suppressToggle = true;
