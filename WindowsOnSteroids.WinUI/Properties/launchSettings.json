@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "WindowsOnSteroids.WinUI (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "WindowsOnSteroids.WinUI (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

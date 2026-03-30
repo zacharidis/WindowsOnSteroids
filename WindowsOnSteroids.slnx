@@ -1,3 +1,7 @@
 <Solution>
+  <Project Path="WindowsOnSteroids.WinUI/WindowsOnSteroids.WinUI.csproj" Id="58194ecc-150c-4d55-87f8-78b26cb404ef">
+    <Platform Project="x64" />
+    <Deploy />
+  </Project>
   <Project Path="WindowsOnSteroids/WindowsOnSteroids.csproj" />
 </Solution>
