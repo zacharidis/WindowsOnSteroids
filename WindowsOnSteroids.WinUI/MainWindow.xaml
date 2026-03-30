@@ -1,19 +1,44 @@
-<?xml version="1.0" encoding="utf-8"?>
 <Window
     x:Class="WindowsOnSteroids.WinUI.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:WindowsOnSteroids.WinUI"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    Title="WindowsOnSteroids.WinUI">
-
-    <Window.SystemBackdrop>
-        <MicaBackdrop />
-    </Window.SystemBackdrop>
-
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    Title="⭐ Windows On Steroids"
+    Width="920" Height="720"
+    Background="{ThemeResource MicaBackdrop}">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <!-- Header -->
+            <RowDefinition Height="*"/>
+            <!-- Content -->
+            <RowDefinition Height="Auto"/>
+            <!-- Status -->
+        </Grid.RowDefinitions>
 
+        <!-- Header -->
+        <Border Background="{ThemeResource CardBackgroundFillColorDefaultBrush}" Padding="24,16">
+            <StackPanel Orientation="Horizontal" Spacing="12">
+                <TextBlock Text="⭐ Windows On Steroids" FontSize="28" FontWeight="SemiBold" VerticalAlignment="Center"/>
+                <TextBlock Text="30+ safe registry tweaks for Win11" FontSize="14" Opacity="0.7" VerticalAlignment="Center" Margin="0,4,0,0"/>
+            </StackPanel>
+        </Border>
+
+        <!-- Main content -->
+        <ScrollView Grid.Row="1" Padding="24">
+            <StackPanel x:Name="TweaksPanel" Spacing="16"/>
+        </ScrollView>
+
+        <!-- Status bar -->
+        <Border Grid.Row="2" Background="{ThemeResource CardBackgroundFillColorDefaultBrush}" Padding="24">
+            <StackPanel Orientation="Horizontal" Spacing="12">
+                <Button Content="🚀 Apply All" Click="ApplyAll_Click" Style="{StaticResource AccentButtonStyle}"/>
+                <Button Content="❌ Reset All" Click="ResetAll_Click"/>
+                <Button Content="⟳ Restore Defaults" Click="RestoreDefaults_Click"/>
+                <TextBlock x:Name="StatusText" VerticalAlignment="Center" FontSize="14"/>
+                <TextBlock x:Name="LastApplied" VerticalAlignment="Center" FontSize="12" Opacity="0.6"/>
+            </StackPanel>
+        </Border>
     </Grid>
 </Window>
