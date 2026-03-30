@@ -174,6 +174,253 @@ public class TweakManager
             ValueType = TweakValueType.DWord,
             EnabledValue = 0, DefaultValue = 1
         },
+        // — AI / Copilot / Recall (2026) —
+new() {
+    Id = "copilot_full",
+    Category = "🔒 AI & Copilot",
+    Name = "Disable Windows Copilot Completely",
+    Description = "Blocks Copilot AI assistant (taskbar, keyboard shortcut, silent reinstalls)",
+    Hive = RegistryHive.CurrentUser,
+    KeyPath = @"SOFTWARE\Policies\Microsoft\Windows\WindowsCopilot",
+    ValueName = "TurnOffWindowsCopilot",
+    ValueType = TweakValueType.DWord,
+    EnabledValue = 1,
+    DefaultValue = 0
+},
+new() {
+    Id = "recall",
+    Category = "🔒 AI & Copilot",
+    Name = "Disable Windows Recall (Snapshots)",
+    Description = "Stops AI timeline recording of your screen/activity (huge privacy + storage win)",
+    Hive = RegistryHive.LocalMachine,
+    KeyPath = @"SOFTWARE\Policies\Microsoft\Windows\WindowsAI",
+    ValueName = "AllowRecallEnablement",
+    ValueType = TweakValueType.DWord,
+    EnabledValue = 0,
+    DefaultValue = 1
+},
+new() {
+    Id = "ai_data_analysis",
+    Category = "🔒 AI & Copilot",
+    Name = "Disable AI Data Analysis",
+    Description = "Prevents Copilot/Recall from sending usage data for AI training",
+    Hive = RegistryHive.LocalMachine,
+    KeyPath = @"SOFTWARE\Policies\Microsoft\Windows\WindowsAI",
+    ValueName = "DisableAIDataAnalysis",
+    ValueType = TweakValueType.DWord,
+    EnabledValue = 1,
+    DefaultValue = 0
+},
+new() {
+    Id = "gaming_copilot",
+    Category = "🔒 AI & Copilot",
+    Name = "Disable Gaming Copilot",
+    Description = "Removes AI hints/widget inside Game Bar (2026 feature)",
+    Hive = RegistryHive.CurrentUser,
+    KeyPath = @"SOFTWARE\Microsoft\Windows\CurrentVersion\GameDVR",
+    ValueName = "GamingCopilotEnabled",
+    ValueType = TweakValueType.DWord,
+    EnabledValue = 0,
+    DefaultValue = 1
+},
+
+// — Gaming (FPS + input lag) —
+new() {
+    Id = "game_dvr",
+    Category = "🎮 Gaming",
+    Name = "Disable Xbox Game DVR / Game Bar",
+    Description = "Stops background recording + overlay (biggest gaming performance win)",
+    Hive = RegistryHive.CurrentUser,
+    KeyPath = @"System\GameConfigStore",
+    ValueName = "GameDVR_Enabled",
+    ValueType = TweakValueType.DWord,
+    EnabledValue = 0,
+    DefaultValue = 1
+},
+new() {
+    Id = "fullscreen_optimizations",
+    Category = "🎮 Gaming",
+    Name = "Disable Fullscreen Optimizations (Global)",
+    Description = "Removes Windows overlay layers for true exclusive fullscreen (better FPS/1% lows)",
+    Hive = RegistryHive.CurrentUser,
+    KeyPath = @"System\GameConfigStore",
+    ValueName = "GameDVR_DSEBehavior",
+    ValueType = TweakValueType.DWord,
+    EnabledValue = 2,
+    DefaultValue = 0
+},
+new() {
+    Id = "gpu_priority",
+    Category = "🎮 Gaming",
+    Name = "Set GPU/CPU Priority to High for Games",
+    Description = "Gives games maximum scheduling priority (tested +5-15% FPS in many titles)",
+    Hive = RegistryHive.LocalMachine,
+    KeyPath = @"SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Games",
+    ValueName = "Scheduling Category",
+    ValueType = TweakValueType.String,
+    EnabledValue = "High",
+    DefaultValue = "Medium"
+},
+new() {
+    Id = "network_throttling",
+    Category = "🎮 Gaming",
+    Name = "Disable Network Throttling",
+    Description = "Removes artificial network limit for online gaming (lower ping)",
+    Hive = RegistryHive.LocalMachine,
+    KeyPath = @"SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile",
+    ValueName = "NetworkThrottlingIndex",
+    ValueType = TweakValueType.DWord,
+    EnabledValue = -1, // ffffffff in hex
+    DefaultValue = 0
+},
+new() {
+    Id = "vbs",
+    Category = "🎮 Gaming",
+    Name = "Disable Virtualization-Based Security (VBS)",
+    Description = "Huge gaming boost (2-10% FPS) on supported hardware — reversible",
+    Hive = RegistryHive.LocalMachine,
+    KeyPath = @"SOFTWARE\Policies\Microsoft\Windows\DeviceGuard",
+    ValueName = "EnableVirtualizationBasedSecurity",
+    ValueType = TweakValueType.DWord,
+    EnabledValue = 0,
+    DefaultValue = 1
+},
+new() {
+    Id = "game_mode",
+    Category = "🎮 Gaming",
+    Name = "Force Game Mode On",
+    Description = "Ensures Game Mode is always active for all games",
+    Hive = RegistryHive.CurrentUser,
+    KeyPath = @"SOFTWARE\Microsoft\Windows\CurrentVersion\GameDVR",
+    ValueName = "AppCaptureEnabled",
+    ValueType = TweakValueType.DWord,
+    EnabledValue = 1,
+    DefaultValue = 0
+},
+
+// — Advanced Performance —
+new() {
+    Id = "background_apps",
+    Category = "⚡ Advanced Performance",
+    Name = "Disable Background Apps",
+    Description = "Stops all apps from running in background (massive RAM/CPU savings)",
+    Hive = RegistryHive.CurrentUser,
+    KeyPath = @"SOFTWARE\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications",
+    ValueName = "GlobalUserDisabled",
+    ValueType = TweakValueType.DWord,
+    EnabledValue = 1,
+    DefaultValue = 0
+},
+new() {
+    Id = "mpo",
+    Category = "⚡ Advanced Performance",
+    Name = "Disable Multi-Plane Overlay (MPO)",
+    Description = "Fixes micro-stutter in some games (especially NVIDIA/AMD)",
+    Hive = RegistryHive.LocalMachine,
+    KeyPath = @"SOFTWARE\Microsoft\Windows\Dwm",
+    ValueName = "OverlayTestMode",
+    ValueType = TweakValueType.DWord,
+    EnabledValue = 5,
+    DefaultValue = 0
+},
+new() {
+    Id = "search_indexing",
+    Category = "⚡ Advanced Performance",
+    Name = "Disable Windows Search Indexing",
+    Description = "Stops constant disk activity (great for SSDs and gaming PCs)",
+    Hive = RegistryHive.LocalMachine,
+    KeyPath = @"SYSTEM\CurrentControlSet\Services\WSearch",
+    ValueName = "Start",
+    ValueType = TweakValueType.DWord,
+    EnabledValue = 4,
+    DefaultValue = 3
+},
+new() {
+    Id = "startup_delay2",
+    Category = "⚡ Advanced Performance",
+    Name = "Remove Additional Startup Delay (Explorer)",
+    Description = "Further reduces Start menu and Explorer lag",
+    Hive = RegistryHive.CurrentUser,
+    KeyPath = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced",
+    ValueName = "Serialize",
+    ValueType = TweakValueType.DWord,
+    EnabledValue = 0,
+    DefaultValue = 1
+},
+new() {
+    Id = "power_throttle",
+    Category = "⚡ Advanced Performance",
+    Name = "Disable Power Throttling",
+    Description = "Prevents CPU/GPU power limits on desktop/gaming machines",
+    Hive = RegistryHive.LocalMachine,
+    KeyPath = @"SYSTEM\CurrentControlSet\Control\Power",
+    ValueName = "PowerThrottling",
+    ValueType = TweakValueType.DWord,
+    EnabledValue = 0,
+    DefaultValue = 1
+},
+
+// — Extra Privacy —
+new() {
+    Id = "onedrive_autostart",
+    Category = "📉 Privacy",
+    Name = "Disable OneDrive Auto-Start",
+    Description = "Stops OneDrive from launching at boot (saves resources + privacy)",
+    Hive = RegistryHive.CurrentUser,
+    KeyPath = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Run",
+    ValueName = "OneDrive",
+    ValueType = TweakValueType.String,
+    EnabledValue = "", // empty = disabled
+    DefaultValue = "OneDrive.exe /background"
+},
+new() {
+    Id = "cortana",
+    Category = "📉 Privacy",
+    Name = "Disable Cortana / Search Suggestions",
+    Description = "Fully disables legacy Cortana and Bing search suggestions",
+    Hive = RegistryHive.CurrentUser,
+    KeyPath = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Search",
+    ValueName = "CortanaConsent",
+    ValueType = TweakValueType.DWord,
+    EnabledValue = 0,
+    DefaultValue = 1
+},
+new() {
+    Id = "suggested_apps",
+    Category = "📉 Privacy",
+    Name = "Disable All Suggested Apps & Ads",
+    Description = "Removes promotions from Start Menu, Settings, Explorer",
+    Hive = RegistryHive.CurrentUser,
+    KeyPath = @"SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager",
+    ValueName = "SubscribedContent-338388Enabled",
+    ValueType = TweakValueType.DWord,
+    EnabledValue = 0,
+    DefaultValue = 1
+},
+new() {
+    Id = "edge_background",
+    Category = "📉 Privacy",
+    Name = "Disable Microsoft Edge Background Services",
+    Description = "Stops Edge from running silently in background",
+    Hive = RegistryHive.LocalMachine,
+    KeyPath = @"SOFTWARE\Policies\Microsoft\Edge",
+    ValueName = "BackgroundModeEnabled",
+    ValueType = TweakValueType.DWord,
+    EnabledValue = 0,
+    DefaultValue = 1
+},
+new() {
+    Id = "silent_install",
+    Category = "📉 Privacy",
+    Name = "Block Silent App Installs",
+    Description = "Prevents Microsoft from force-installing apps in background",
+    Hive = RegistryHive.CurrentUser,
+    KeyPath = @"SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager",
+    ValueName = "SilentInstalledAppsEnabled",
+    ValueType = TweakValueType.DWord,
+    EnabledValue = 0,
+    DefaultValue = 1
+}
     };
 
     // ── Registry Read / Write ─────────────────────────────────────────────────

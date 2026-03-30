@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<OutputType>WinExe</OutputType>
 		<TargetFramework>net8.0-windows10.0.26100.0</TargetFramework>
@@ -7,7 +7,11 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<AssemblyName>WindowsOnSteroids</AssemblyName>
 		<RootNamespace>WindowsOnSteroids.WinUI</RootNamespace>
-		<ApplicationManifest>appWind3.manifest</ApplicationManifest>
+		<ApplicationManifest>app.manifest</ApplicationManifest>
+
+		<!-- Unpackaged mode - required for simple EXE launch -->
+		<WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
+		<WindowsPackageType>None</WindowsPackageType>
 	</PropertyGroup>
 	<ItemGroup>
 	  <None Remove="App.xaml" />
